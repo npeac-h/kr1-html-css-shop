@@ -32,7 +32,7 @@
 Группа: ЭФБО-11-25
 
 
-Ссылка на опубликованный проект: https://destroffik-code.github.io/kr1-html-css-shop/ 
+Ссылка на опубликованный проект: https://npeac-h.github.io/kr1-html-css-shop/
 
 
 ## Текущий статус
@@ -159,7 +159,7 @@ python3 -m http.server 8000
 Ветка: `feature/multi-page-navigation` → `main`.
 Название Pull Request: `Add multi-page structure navigation and anchors`.
 
-Репозиторий: https://github.com/destrOFFik-code/kr1-html-css-shop
+Репозиторий: https://github.com/npeac-h/kr1-html-css-shop
 
 
 ## Использование Flexbox и Grid
