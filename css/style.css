@@ -135,6 +135,7 @@ footer {
 }
 
 .product-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   min-width: 0;
@@ -148,8 +149,29 @@ footer {
   border-color: var(--color-primary);
 }
 
-.product-card h3 {
+.product-card__badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 8px;
+  background-color: #b00020;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+.product-card__title {
   margin-top: 0;
+}
+
+.product-card__desc {
+  margin: 0 0 8px;
+}
+
+.product-card__price {
+  margin: 0 0 16px;
+  font-weight: bold;
+  color: var(--color-primary);
 }
 
 .product-card__button {
@@ -458,4 +480,40 @@ a:focus-visible {
 
 [aria-invalid="true"] {
   border-color: var(--color-danger);
+}
+/* ===============================
+   6. Позиционирование
+   =============================== */
+
+.product-card {
+  position: relative; /* родитель для absolute */
+}
+
+.product-card__badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 8px;
+  background-color: #b00020;
+  color: #ffffff;
+  font-size: 12px;
+  border-radius: 4px;
+}
+.to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+.to-top:hover {
+  background-color: var(--color-primary-dark);
 }
