@@ -73,7 +73,9 @@ footer {
 .site-nav__list {
   display: flex;
   flex-wrap: wrap;
-  gap: var(--space-sm) var(--space-lg);
+  justify-content: center;
+  align-items: center;
+  gap: var(--space-md);
   padding: 0;
   margin: 0;
   list-style: none;
@@ -90,16 +92,18 @@ footer {
   Оформляем ссылки меню.
 */
 .site-nav__list a {
-  color: #0057b8;
+  display: inline-block;
+  padding: var(--space-sm) var(--space-md);
+  color: var(--color-primary);
   text-decoration: none;
+  border-radius: var(--radius-sm);
 }
 
-/*
-  При наведении мыши подчёркиваем ссылку.
-  Подробно состояния интерфейса будут рассмотрены в практической работе 1.7.
-*/
-.site-nav__list a:hover {
-  text-decoration: underline;
+/* Подсветка всей кликабельной области пункта меню. */
+.site-nav__list a:hover,
+.site-nav__list a[aria-current="page"]:hover {
+  color: var(--color-white);
+  background-color: var(--color-primary);
 }
 
 /*
@@ -135,10 +139,11 @@ footer {
 }
 
 .product-card {
-  position: relative;
   display: flex;
   flex-direction: column;
+  gap: var(--space-sm);
   min-width: 0;
+  margin-bottom: 0;
   padding: var(--space-md);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -149,32 +154,12 @@ footer {
   border-color: var(--color-primary);
 }
 
-.product-card__badge {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  padding: 2px 8px;
-  background-color: #b00020;
-  color: #ffffff;
-  font-size: 12px;
-  border-radius: 4px;
+.product-card h3,
+.product-card p {
+  margin: 0;
 }
 
-.product-card__title {
-  margin-top: 0;
-}
-
-.product-card__desc {
-  margin: 0 0 8px;
-}
-
-.product-card__price {
-  margin: 0 0 16px;
-  font-weight: bold;
-  color: var(--color-primary);
-}
-
-.product-card__button {
+.product-card .button {
   align-self: flex-start;
   margin-top: auto;
 }
@@ -196,21 +181,96 @@ footer {
     padding: var(--space-md);
   }
 
-  .site-nav__list {
-    gap: var(--space-sm) var(--space-md);
-  }
-
   .products-grid {
     grid-template-columns: 1fr;
   }
 }
 
 
-/*
-  Пока это обычная ссылка, но визуально она оформляется как кнопка.
-*/
+/* Каталог: именованные области Grid для фильтров и товаров. */
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 260px minmax(0, 1fr);
+  grid-template-areas: "filters products";
+  align-items: start;
+  gap: var(--space-lg);
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-xl);
+}
+
+.catalog-filters {
+  grid-area: filters;
+  min-width: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  background-color: var(--color-surface);
+}
+
+.catalog-products {
+  grid-area: products;
+  min-width: 0;
+}
+
+.catalog-filters h2,
+.catalog-products h2 {
+  margin-top: 0;
+}
+
+.filters-note {
+  color: var(--color-muted);
+  font-size: 14px;
+}
+
+.filters-form {
+  display: grid;
+  gap: var(--space-md);
+}
+
+.filters-form fieldset {
+  min-width: 0;
+  margin: 0;
+  padding: var(--space-md);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+}
+
+.filters-form legend {
+  font-weight: 700;
+}
+
+.filters-form label {
+  display: block;
+  margin-bottom: var(--space-sm);
+}
+
+.filters-form input[type="number"] {
+  width: 100%;
+  padding: var(--space-sm) 10px;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font: inherit;
+}
+
+.filters-form input[type="number"] + label {
+  margin-top: var(--space-sm);
+}
+
+.filters-form input:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 3px;
+}
+
+.filters-form .button {
+  justify-self: start;
+}
+
+/* Общий вид ссылок и кнопок действий. */
 .button {
   display: inline-block;
+  font: inherit;
   padding: var(--space-sm) var(--space-md);
   color: var(--color-white);
   background-color: var(--color-primary);
@@ -481,39 +541,71 @@ a:focus-visible {
 [aria-invalid="true"] {
   border-color: var(--color-danger);
 }
-/* ===============================
-   6. Позиционирование
-   =============================== */
 
-.product-card {
-  position: relative; /* родитель для absolute */
+/* Навигация и якорные ссылки многостраничного сайта. */
+html {
+  scroll-behavior: smooth;
 }
 
-.product-card__badge {
-  position: absolute;
-  top: 8px;
-  right: 8px;
-  padding: 2px 8px;
-  background-color: #b00020;
-  color: #ffffff;
-  font-size: 12px;
-  border-radius: 4px;
-}
-.to-top {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  width: 44px;
-  height: 44px;
-  border: none;
-  border-radius: 50%;
-  background-color: var(--color-primary);
-  color: var(--color-white);
-  font-size: 20px;
-  cursor: pointer;
-  z-index: 100;
+:target {
+  outline: 2px dashed var(--color-primary);
+  outline-offset: 4px;
 }
 
-.to-top:hover {
-  background-color: var(--color-primary-dark);
+.site-nav__list a[aria-current="page"] {
+  color: var(--color-primary-dark);
+  font-weight: bold;
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+.breadcrumbs {
+  max-width: var(--container-width);
+  margin: 0 auto var(--space-md);
+  font-size: 14px;
+  color: var(--color-muted);
+}
+
+.breadcrumbs a {
+  color: var(--color-primary);
+}
+
+.breadcrumbs span::before {
+  content: " / ";
+  color: var(--color-muted);
+}
+
+.site-footer {
+  max-width: var(--container-width);
+  margin: 0 auto;
+}
+
+.hero-link {
+  display: inline-block;
+  margin: var(--space-sm);
+}
+
+.contact-details {
+  font-style: normal;
+}
+
+.contact-details li {
+  margin-bottom: var(--space-sm);
+}
+
+/* Переносимое меню на узком экране не перекрывает цель якоря. */
+@media (max-width: 540px) {
+  header {
+    position: static;
+  }
+
+  .section {
+    scroll-margin-top: var(--space-md);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
 }
