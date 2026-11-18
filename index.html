@@ -16,6 +16,7 @@
   <meta property="og:image:height" content="630">
   <meta property="og:image:alt" content="ShopProject — учебный интернет-магазин">
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/responsive.css">
   <script src="js/main.js" defer></script>
 </head>
 <body class="page" id="top">
@@ -64,7 +65,20 @@
         <article class="product-card product-card--featured">
           <span class="product-card__badge">Хит</span>
           <a class="product-card__image-link" href="product.html#mug" aria-label="Подробнее: Керамическая матовая кружка">
-            <img class="product-card__image" src="images/mug.jpg" alt="Керамическая матовая кружка зеленого цвета" width="640" height="400" loading="lazy" decoding="async">
+            <picture>
+              <source srcset="images/mug.webp" type="image/webp">
+              <img 
+                class="product-card__image" 
+                src="images/mug.jpg" 
+                srcset="images/mug.jpg 640w" 
+                sizes="(max-width: 767px) 100vw, (max-width: 1199px) 50vw, 33vw" 
+                alt="Керамическая матовая кружка зеленого цвета" 
+                width="640" 
+                height="400" 
+                loading="lazy" 
+                decoding="async"
+              >
+            </picture>
           </a>
           <p class="product-card__category">Посуда</p>
           <h3 class="product-card__title"><a class="product-card__title-link" href="product.html#mug">Керамическая матовая кружка</a></h3>
