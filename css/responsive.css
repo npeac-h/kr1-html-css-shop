@@ -1,0 +1,114 @@
+/* css/responsive.css */
+/* Адаптивные стили для КР №3/№4. Подход: Mobile First. Базовые стили — мобильные. */
+
+/* Базовые сбросы */
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+img, video { max-width: 100%; height: auto; }
+body { overflow-x: hidden; }
+
+/* Контейнеры (Mobile First) */
+.container, .main, .section {
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+}
+.section { padding-block: clamp(24px, 5vw, 64px); }
+
+/* --- Адаптация шапки и навигации --- */
+.site-header__inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  padding-block: 16px;
+}
+
+.site-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  text-align: center;
+}
+
+.site-nav__link {
+  display: block;
+  padding: 12px 16px;
+}
+
+@media (min-width: 768px) {
+  .site-header__inner { flex-direction: row; justify-content: space-between; }
+  .site-nav__list { flex-direction: row; flex-wrap: wrap; align-items: center; }
+}
+
+/* --- Адаптация Hero-блока --- */
+.hero { padding-block: clamp(32px, 8vw, 96px); text-align: center; }
+.hero__title { font-size: clamp(24px, 5vw, 48px); }
+.hero__description { font-size: clamp(16px, 2vw, 20px); margin-bottom: 24px; }
+
+@media (min-width: 768px) {
+  .hero { text-align: left; }
+}
+
+/* --- Адаптация сетки карточек --- */
+.products-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-md, 24px);
+}
+
+@media (min-width: 768px) {
+  .products-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (min-width: 1024px) {
+  .products-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+/* --- Адаптация каталога (боковые фильтры) --- */
+.catalog-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-lg, 32px);
+}
+
+@media (min-width: 768px) {
+  .catalog-layout { grid-template-columns: 260px 1fr; }
+}
+
+/* --- Адаптация форм --- */
+.order-form {
+  display: grid;
+  gap: var(--space-md, 16px);
+}
+
+.order-form__field { display: grid; gap: 8px; }
+.order-form__input, .order-form__textarea, .order-form__select {
+  width: 100%;
+  min-height: 44px; /* Удобно для пальцев */
+}
+
+@media (min-width: 768px) {
+  .order-form { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .order-form__field--wide { grid-column: 1 / -1; }
+}
+
+/* --- Адаптация таблиц --- */
+.table-wrapper {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.product-table {
+  width: 100%;
+  min-width: 640px; /* Таблица не сжимается в кашу, а скроллится */
+  border-collapse: collapse;
+}
+
+/* --- Адаптивные изображения (базовое правило) --- */
+.product-card__image, .product-detail__image {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
