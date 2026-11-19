@@ -105,3 +105,33 @@ if (orderForm) {
     }
   });
 }
+// === Блок для КР №4: Функции и безопасный вывод ===
+
+function formatPrice(price) {
+  return price + ' руб.';
+}
+
+function calculateDiscount(price, percent) {
+  if (percent <= 0) return price;
+  return price - ((price * percent) / 100);
+}
+
+function getProductStatus(inStock) {
+  return inStock ? 'В наличии' : 'Нет в наличии';
+}
+
+function getShortDescription(product) {
+  const finalPrice = calculateDiscount(product.price, product.discountPercent);
+  return `${product.category} | ${product.name} — ${formatPrice(finalPrice)} (${getProductStatus(product.inStock)})`;
+}
+
+// Вывод результатов работы функций в консоль
+console.log('--- Проверка работы JS (ПР 15) ---');
+productsData.forEach(item => console.log(getShortDescription(item)));
+
+// Безопасный вывод на страницу через textContent (защита от XSS)
+const jsCatalogOutput = document.getElementById('js-catalog-output');
+if (jsCatalogOutput) {
+  const inStockCount = productsData.filter(p => p.inStock).length;
+  jsCatalogOutput.textContent = `Данные загружены через JS: Всего ${productsData.length} товаров. В наличии: ${inStockCount}.`;
+}
