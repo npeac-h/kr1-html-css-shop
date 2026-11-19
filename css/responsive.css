@@ -112,3 +112,11 @@ body { overflow-x: hidden; }
   height: auto;
   object-fit: cover;
 }
+/* Адаптация изображений на странице товаров (product.html) */
+.product-detail__image {
+  width: 100%;
+  max-width: 640px; /* Ограничиваем максимальный размер, чтобы на ПК не было слишком огромным */
+  height: auto;
+  object-fit: contain;
+  border-radius: var(--radius-md, 8px);
+}
