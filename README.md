@@ -207,3 +207,9 @@ python3 -m http.server 8000
 `kr2-bootstrap-shop`. В рамках практики №8 подготовлена постановка этой работы:
 [docs/kr2-assignment.md](docs/kr2-assignment.md).
 В текущем репозитории КР №1 CSS-фреймворки не подключены.
+
+## Контрольная работа №4 (Практики 12-15)
+
+- **ПР 12**: Создан `css/responsive.css` (Mobile First). Адаптированы навигация, сетка карточек, формы и таблицы. Добавлены адаптивные изображения (`<picture>`, `srcset`).
+- **ПР 13-14**: Проверена семантика, фокус (`:focus-visible`), контраст и доступность (Lighthouse). Сделаны скриншоты (`docs/mobile.png`, `docs/lighthouse.png`).
+- **ПР 15**: Подключен JavaScript через `defer`. Создан `js/data.js` (6 товаров). В `main.js` добавлены функции (`formatPrice`, `calculateDiscount` и др.). Вывод на страницу реализован безопасно через `textContent` (защита от XSS).
